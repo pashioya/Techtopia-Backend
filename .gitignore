@@ -4,10 +4,13 @@
 # Ignore Gradle build output directory
 build
 
+/boundedContextB/build
+
+**/build
+
 bin/
 
 node_modules/
-
 # Ignore log files and other temporary files
 *.log
 tmp/
@@ -40,6 +43,7 @@ build/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
 
+#ignore gradle files
 
 #ignore jar files
 *.jar

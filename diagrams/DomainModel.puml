@@ -11,14 +11,6 @@ package "Theme Park" <<core>><<IMPLEMENT>>{
     +phone: String
     +address: String
   }
-  class Staff{
-    +id: Integer
-    +name: String
-    +age: Integer
-    +email: String
-    +phone: String
-    +address: String
-  }
 }
 
 package "Entrance Gate" <<core>><<SIMULATED>>{
@@ -180,7 +172,6 @@ package "Payment"<<generic>><<REMOVED>>{
   }
 }
 
-Attraction --|> QueGate 
 
 Guest --|> HotelReservation 
 HotelManager --|> HotelReservation 
