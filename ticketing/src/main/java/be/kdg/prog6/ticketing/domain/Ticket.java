@@ -19,13 +19,13 @@ public class Ticket {
     private LocalDateTime validUntil;
 
     private TicketUUID ticketUUID;
-    private PersonUUID personUUID;
+    private VisitorUUID visitorUUID;
 
     public record TicketUUID(UUID uuid){
 
     }
 
-    public record PersonUUID(UUID uuid){
+    public record VisitorUUID(UUID uuid){
 
     }
 

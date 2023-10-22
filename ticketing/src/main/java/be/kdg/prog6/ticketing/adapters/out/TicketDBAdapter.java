@@ -1,7 +1,6 @@
 package be.kdg.prog6.ticketing.adapters.out;
 
 import be.kdg.prog6.ticketing.domain.Ticket;
-import be.kdg.prog6.ticketing.domain.Visitor;
 import be.kdg.prog6.ticketing.ports.out.TicketCreatePort;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -14,11 +13,11 @@ public class TicketDBAdapter implements TicketCreatePort {
 
 
     @Override
-    public void createTicket(Visitor.VisitorUUID visitorUUID, Ticket ticket) {
+    public void createTicket(Ticket ticket) {
         TicketJpaEntity ticketJpaEntity = new TicketJpaEntity();
 
         ticketJpaEntity.setTicketUUID(String.valueOf(ticket.getTicketUUID()));
-        ticketJpaEntity.setVisitorUUID(visitorUUID.uuid());
+        ticketJpaEntity.setVisitorUUID(ticket.getVisitorUUID().uuid());
         ticketJpaEntity.setTicketDurationType(ticket.getTicketDurationType());
         ticketJpaEntity.setTicketAgeType(ticket.getTicketAgeType());
         ticketJpaEntity.setValidFrom(ticket.getValidFrom());
