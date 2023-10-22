@@ -1,10 +1,13 @@
 # Ignore Gradle project-specific cache directory
 .gradle
+.gradle/**
+/gradle
 
 # Ignore Gradle build output directory
 build
 
-/boundedContextB/build
+/ticketing/build
+/ParkInformationSystem/build
 
 **/build
 
@@ -48,3 +51,17 @@ build/
 #ignore jar files
 *.jar
 ```
+
+
+HELP.md
+infrastructure/mysql
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+/infrastructure/bmac/*

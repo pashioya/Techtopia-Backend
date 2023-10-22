@@ -5,6 +5,7 @@ plugins {
 
 dependencies {
     implementation project(":common")
+    implementation project(':ticketing')
     implementation project(':ParkInformationSystem')
-    implementation project(':boundedContextB')
 }
+
