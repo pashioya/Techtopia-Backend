@@ -25,3 +25,10 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.28'
 }
 
+sourceSets{
+    main {
+        java {
+            resources.srcDirs = ['config']
+        }
+    }
+}

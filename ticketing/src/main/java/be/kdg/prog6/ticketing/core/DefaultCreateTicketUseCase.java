@@ -2,7 +2,7 @@ package be.kdg.prog6.ticketing.core;
 
 import be.kdg.prog6.ticketing.ports.in.CreateTicketUseCase;
 import be.kdg.prog6.ticketing.ports.in.CreateTicketCommand;
-import be.kdg.prog6.ticketing.ports.out.TicketCreatePort;
+import be.kdg.prog6.ticketing.ports.out.CreateTicketPort;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,11 +10,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class DefaultCreateTicketUseCase implements CreateTicketUseCase{
 
-    private final TicketCreatePort ticketCreatePort;
+    private final CreateTicketPort createTicketPort;
 
     @Override
     public void createTicket(CreateTicketCommand createTicketCommand) {
-        ticketCreatePort.createTicket(
+        createTicketPort.createTicket(
                 createTicketCommand.ticket()
         );
     }

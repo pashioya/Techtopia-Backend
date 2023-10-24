@@ -9,3 +9,10 @@ dependencies {
     implementation project(':ParkInformationSystem')
 }
 
+sourceSets{
+    main {
+        java {
+            resources.srcDirs = ['config']
+        }
+    }
+}

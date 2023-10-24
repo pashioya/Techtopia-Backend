@@ -1,23 +1,15 @@
-package be.kdg.prog6.ticketing.domain;
+package be.kdg.prog6.ticketing.adapters.in.web;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.UUID;
-
 @AllArgsConstructor
 @Getter
 @Setter
-public class Visitor {
-
-    private VisitorUUID visitorUUID;
+public class CreateVisitorDTO {
     private String name;
     private String address;
     private String email;
     private String phone;
-
-
-    public record VisitorUUID(UUID uuid){
-    }
 }

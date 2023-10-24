@@ -37,6 +37,5 @@ public class TicketJpaEntity {
     @Setter
     private LocalDateTime validFrom;
     @Setter
-    private LocalDateTime validUntil
-            ;
+    private LocalDateTime validUntil;
 }

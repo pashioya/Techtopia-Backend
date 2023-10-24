@@ -63,5 +63,14 @@ infrastructure/mysql
 /nbdist/
 /.nb-gradle/
 
-### VS Code ###
+#Infrastructure
 /infrastructure/bmac/*
+/infrastructure/idp_mysql_data
+/infrastructure/idp_mysql_data/*
+/infrastructure/rabbitmq
+/infrastructure/rabbitmq/*
+/infrastructure/mysql
+/infrastructure/mysql/*
+
+buildSrc/
+buildSrc/**
