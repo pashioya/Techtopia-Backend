@@ -5,8 +5,9 @@ plugins {
 
 dependencies {
     implementation project(":common")
-    implementation project(':ticketing')
+    implementation project(':Ticketing')
     implementation project(':ParkInformationSystem')
+    implementation project(':EntranceGate')
 }
 
 sourceSets{

@@ -3,4 +3,6 @@ rootProject.name = 'techtopia-backend'
 include 'application'
 include 'common'
 include 'ParkInformationSystem'
-include 'ticketing'
+include 'Ticketing'
+include 'EntranceGate'
+
