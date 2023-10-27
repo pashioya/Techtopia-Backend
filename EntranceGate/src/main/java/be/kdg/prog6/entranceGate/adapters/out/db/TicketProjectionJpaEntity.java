@@ -1,7 +1,5 @@
-package be.kdg.prog6.ticketing.adapters.out;
+package be.kdg.prog6.entranceGate.adapters.out.db;
 
-import be.kdg.prog6.ticketing.domain.TicketAgeType;
-import be.kdg.prog6.ticketing.domain.TicketDurationType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,31 +9,24 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(schema = "ticket", name = "ticket_projection")
+@Table(schema = "entrancegate", name = "eg.ticketprojection")
 @Getter
-public class TicketJpaEntity {
+public class TicketProjectionJpaEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NaturalId
     @Setter
-    private String ticketUUID;
+    private UUID ticketUUID;
 
     @Setter
     @NaturalId
     private UUID visitorUUID;
 
     @Setter
-    @Enumerated(EnumType.STRING)
-    private TicketDurationType ticketDurationType;
-
-    @Enumerated(EnumType.STRING)
-    @Setter
-    private TicketAgeType ticketAgeType;
-
-    @Setter
     private LocalDateTime validFrom;
+
     @Setter
     private LocalDateTime validUntil;
 }

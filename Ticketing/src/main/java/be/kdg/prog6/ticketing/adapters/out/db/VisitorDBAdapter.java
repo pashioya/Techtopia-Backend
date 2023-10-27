@@ -1,4 +1,4 @@
-package be.kdg.prog6.ticketing.adapters.out;
+package be.kdg.prog6.ticketing.adapters.out.db;
 
 import be.kdg.prog6.ticketing.domain.Visitor;
 import be.kdg.prog6.ticketing.ports.out.CreateVisitorPort;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @AllArgsConstructor
 @Component
-public class DBAdapterVisitor implements CreateVisitorPort {
+public class VisitorDBAdapter implements CreateVisitorPort {
 
     private final VisitorRepository visitorRepository;
 

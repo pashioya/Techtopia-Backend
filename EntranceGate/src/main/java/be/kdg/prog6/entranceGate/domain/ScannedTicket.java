@@ -1,4 +1,4 @@
-package be.kdg.prog6.ticketing.domain;
+package be.kdg.prog6.entranceGate.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,20 +10,17 @@ import java.util.UUID;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Ticket {
-    private TicketUUID ticketUUID;
-    private VisitorUUID visitorUUID;
+public class ScannedTicket {
 
-    private TicketDurationType ticketDurationType;
-    private TicketAgeType ticketAgeType;
+    private TicketUUID ticketUUID;
+
     private LocalDateTime validFrom;
     private LocalDateTime validUntil;
-
-    private ActivityWindow activityWindow;
 
     public record TicketUUID(UUID uuid){
     }
 
-    public record VisitorUUID(UUID uuid){
+    public boolean isValid() {
+        return LocalDateTime.now().isAfter(validFrom) && LocalDateTime.now().isBefore(validUntil);
     }
 }

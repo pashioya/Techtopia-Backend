@@ -1,8 +1,8 @@
 package be.kdg.prog6.ticketing.adapters.in.web;
 
 import be.kdg.prog6.ticketing.adapters.in.web.dto.CreateTicketDTO;
+import be.kdg.prog6.ticketing.domain.ActivityWindow;
 import be.kdg.prog6.ticketing.domain.Ticket;
-import be.kdg.prog6.ticketing.ports.in.CreateTicketCommand;
 import be.kdg.prog6.ticketing.ports.in.CreateTicketUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,18 +20,17 @@ public class TicketController {
     @PostMapping("/visitor/{visitorUUID}/ticket")
     public void createTicket(@PathVariable String visitorUUID, @RequestBody CreateTicketDTO createTicketDTO) {
         createTicketUseCase.createTicket(
-                new CreateTicketCommand(
                         new Ticket(
+                                new Ticket.TicketUUID(
+                                        UUID.randomUUID()
+                                ),
+                                new Ticket.VisitorUUID(UUID.fromString(visitorUUID)),
                                 createTicketDTO.getTicketDurationType(),
                                 createTicketDTO.getTicketAgeType(),
                                 createTicketDTO.getValidFrom(),
                                 createTicketDTO.getValidUntil(),
-                                new Ticket.TicketUUID(
-                                        UUID.randomUUID()
-                                ),
-                                new Ticket.VisitorUUID(UUID.fromString(visitorUUID))
+                                new ActivityWindow()
                         )
-                )
         );
     }
 

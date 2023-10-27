@@ -4,5 +4,5 @@ import be.kdg.prog6.ticketing.domain.Ticket;
 
 public interface CreateTicketPort {
 
-    void createTicket(Ticket ticket);
+    void ticketCreated(Ticket ticket);
 }

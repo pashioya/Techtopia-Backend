@@ -1,4 +1,4 @@
-package be.kdg.prog6.ticketing.adapters.out;
+package be.kdg.prog6.ticketing.adapters.out.db;
 
 import jakarta.persistence.*;
 import lombok.Getter;
