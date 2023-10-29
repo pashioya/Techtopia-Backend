@@ -19,8 +19,6 @@ public class Ticket {
     private LocalDateTime validFrom;
     private LocalDateTime validUntil;
 
-    private ActivityWindow activityWindow;
-
     public record TicketUUID(UUID uuid){
     }
 

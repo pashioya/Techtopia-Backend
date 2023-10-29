@@ -2,6 +2,7 @@ package be.kdg.prog6.entranceGate.adapters.out.db;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.NaturalId;
 
@@ -11,7 +12,8 @@ import java.util.UUID;
 @Entity
 @Table(schema = "entrancegate", name = "eg.ticketprojection")
 @Getter
-public class TicketProjectionJpaEntity {
+@NoArgsConstructor
+public class ScannedTicketProjectionJpaEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

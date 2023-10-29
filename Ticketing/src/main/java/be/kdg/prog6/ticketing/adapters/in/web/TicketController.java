@@ -1,7 +1,6 @@
 package be.kdg.prog6.ticketing.adapters.in.web;
 
 import be.kdg.prog6.ticketing.adapters.in.web.dto.CreateTicketDTO;
-import be.kdg.prog6.ticketing.domain.ActivityWindow;
 import be.kdg.prog6.ticketing.domain.Ticket;
 import be.kdg.prog6.ticketing.ports.in.CreateTicketUseCase;
 import lombok.AllArgsConstructor;
@@ -28,8 +27,7 @@ public class TicketController {
                                 createTicketDTO.getTicketDurationType(),
                                 createTicketDTO.getTicketAgeType(),
                                 createTicketDTO.getValidFrom(),
-                                createTicketDTO.getValidUntil(),
-                                new ActivityWindow()
+                                createTicketDTO.getValidUntil()
                         )
         );
     }

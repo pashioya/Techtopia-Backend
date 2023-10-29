@@ -27,6 +27,7 @@ public class VisitorJpaEntity {
     private String address;
 
     @Setter
+    @Column(unique = true)
     private String email;
 
     @Setter
