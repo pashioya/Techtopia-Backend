@@ -1,11 +1,11 @@
-package be.kdg.prog6.entranceGate;
-
+package be.keg.prog6.parkOperations;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class EntranceGateApplication {
+public class ParkOperationsApplication {
     public static void main(String[] args) {
-        SpringApplication.run(EntranceGateApplication.class, args);}
+        SpringApplication.run(ParkOperationsApplication.class, args);
+    }
 }

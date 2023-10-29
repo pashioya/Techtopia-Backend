@@ -8,6 +8,7 @@ dependencies {
     implementation project(':Ticketing')
     implementation project(':ParkInformationSystem')
     implementation project(':EntranceGate')
+    implementation project(':ParkOperations')
 }
 
 sourceSets{

@@ -5,4 +5,5 @@ include 'common'
 include 'ParkInformationSystem'
 include 'Ticketing'
 include 'EntranceGate'
+include 'ParkOperations'
 
