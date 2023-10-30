@@ -21,16 +21,11 @@ public class AttractionProjectDBAdapter implements AttractionProjectionPort {
             Attraction attraction = new Attraction(new Attraction.AttractionUUID(attractionUUID),
                     attractionJpaEntity.get().getName(),
                     attractionJpaEntity.get().getDescription(),
-                    attractionJpaEntity.get().getStatus(),
-                    new Attraction.QueGateUUID(attractionJpaEntity.get().getQueGateUUID()));
+                    attractionJpaEntity.get().getStatus()
+            );
             return Optional.of(attraction);
         }
 
         return Optional.empty();
-    }
-
-    @Override
-    public void saveAttraction(Attraction attraction) {
-
     }
 }

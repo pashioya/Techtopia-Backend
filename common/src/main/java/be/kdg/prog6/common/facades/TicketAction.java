@@ -1,4 +1,4 @@
-package be.kdg.prog6.entranceGate.domain;
+package be.kdg.prog6.common.facades;
 
 public enum TicketAction {
     CHECK_IN,

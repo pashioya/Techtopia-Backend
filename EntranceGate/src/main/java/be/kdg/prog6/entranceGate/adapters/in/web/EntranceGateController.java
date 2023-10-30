@@ -10,7 +10,7 @@ import java.util.UUID;
 
 @RestController
 @AllArgsConstructor
-public class EntranceGateTicketController {
+public class EntranceGateController {
     private final TicketValidityCheck ticketValidityCheck;
     private final CheckInTicketUseCase checkInTicketUseCase;
     private final CheckOutTicketUseCase checkOutTicketUseCase;

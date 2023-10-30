@@ -6,8 +6,5 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface AttractionProjectionPort {
-
     Optional<Attraction> loadAttraction(UUID attractionUUID);
-
-    void saveAttraction(Attraction attraction);
 }

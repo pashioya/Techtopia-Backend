@@ -71,6 +71,3 @@ infrastructure/mysql
 /infrastructure/rabbitmq/*
 /infrastructure/mysql
 /infrastructure/mysql/*
-
-buildSrc/
-buildSrc/**

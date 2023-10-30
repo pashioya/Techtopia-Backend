@@ -1,7 +1,7 @@
 package be.kdg.prog6.entranceGate.core;
 
 import be.kdg.prog6.entranceGate.domain.ScannedTicket;
-import be.kdg.prog6.entranceGate.domain.TicketAction;
+import be.kdg.prog6.common.facades.TicketAction;
 import be.kdg.prog6.entranceGate.domain.TicketActivity;
 import be.kdg.prog6.entranceGate.ports.in.CheckInTicketCommand;
 import be.kdg.prog6.entranceGate.ports.in.CheckInTicketUseCase;
@@ -11,7 +11,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @AllArgsConstructor
 @Service
@@ -19,7 +21,7 @@ public class DefaultCheckInTicket implements CheckInTicketUseCase {
 
     private final ScannedTicketProjectionPort scannedTicketProjectionPort;
 
-    private final ScannedTicketActivityCreatePort scannedTicketActivityCreatePort;
+    private final List<ScannedTicketActivityCreatePort> scannedTicketActivityCreatePorts;
 
 
     @Override
@@ -48,6 +50,7 @@ public class DefaultCheckInTicket implements CheckInTicketUseCase {
         }
 
         TicketActivity newTicketActivity = new TicketActivity(
+                UUID.randomUUID(),
                 TicketAction.CHECK_IN,
                 checkInTicketCommand.entranceGate(),
                 LocalDateTime.now()
@@ -56,10 +59,11 @@ public class DefaultCheckInTicket implements CheckInTicketUseCase {
                 newTicketActivity
         );
 
-        scannedTicketActivityCreatePort
-                .createScannedTicketActivity(
+        scannedTicketActivityCreatePorts.forEach(p ->
+                p.createScannedTicketActivity(
                         scannedTicket.get().getTicketUUID(),
                         newTicketActivity
-                );
+                )
+        );
     }
 }

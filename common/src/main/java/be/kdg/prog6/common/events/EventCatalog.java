@@ -3,6 +3,8 @@ package be.kdg.prog6.common.events;
 public enum EventCatalog {
 
     TICKET_CREATED,
+
+    TICKET_CHECKED_IN_OUT,
     ATTRACTION_ACTIVITY_CREATED,
     ATTRACTION_CREATED,
 
