@@ -1,6 +1,6 @@
 package be.kdg.prog6.parkInformationSystem.adapters.out;
 
-import be.kdg.prog6.parkInformationSystem.domain.attraction.AttractionStatus;
+import be.kdg.prog6.parkInformationSystem.domain.AttractionStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

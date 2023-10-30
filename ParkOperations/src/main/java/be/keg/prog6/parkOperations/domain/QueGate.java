@@ -1,4 +1,4 @@
-package be.kdg.prog6.parkInformationSystem.domain.attraction;
+package be.keg.prog6.parkOperations.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +11,6 @@ public class QueGate {
     private String description;
     private int maxCapacity;
     private int currentCapacity;
-    private QueGateStatus status;
     private Attraction.AttractionUUID attractionUUID;
 
     public record QueGateUUID(String uuid) {

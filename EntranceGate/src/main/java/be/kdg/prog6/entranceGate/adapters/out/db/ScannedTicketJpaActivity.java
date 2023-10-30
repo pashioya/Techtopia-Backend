@@ -28,6 +28,10 @@ public class ScannedTicketJpaActivity {
     @Setter
     private UUID scannedTicket;
 
+    @JdbcTypeCode(Types.VARCHAR)
+    @Setter
+    private UUID entranceGate;
+
     @Setter
     private LocalDateTime pit;
 

@@ -10,7 +10,7 @@ import java.util.UUID;
 
 @RestController
 @AllArgsConstructor
-public class TicketController {
+public class EntranceGateTicketController {
     private final TicketValidityCheck ticketValidityCheck;
     private final CheckInTicketUseCase checkInTicketUseCase;
     private final CheckOutTicketUseCase checkOutTicketUseCase;
@@ -23,20 +23,22 @@ public class TicketController {
         );
     }
 
-    @PostMapping("/ticket/{uuid}/checkIn")
-    public void checkInTicket(@PathVariable UUID uuid) {
+    @PostMapping("/gate/{gateUUID}/ticket/{ticketUUID}/checkIn")
+    public void checkInTicket(@PathVariable UUID gateUUID, @PathVariable UUID ticketUUID) {
         checkInTicketUseCase.checkInTicket(
                 new CheckInTicketCommand(
-                        uuid
+                        ticketUUID,
+                        gateUUID
                 )
         );
     }
 
-    @PostMapping("/ticket/{uuid}/checkOut")
-    public void checkOutTicket(@PathVariable UUID uuid) {
+    @PostMapping("/gate/{gateUUID}/ticket/{ticketUUID}/checkOut")
+    public void checkOutTicket(@PathVariable UUID gateUUID, @PathVariable UUID ticketUUID) {
         checkOutTicketUseCase.checkOutTicket(
                 new CheckOutTicketCommand(
-                        uuid
+                        ticketUUID,
+                        gateUUID
                 )
         );
     }

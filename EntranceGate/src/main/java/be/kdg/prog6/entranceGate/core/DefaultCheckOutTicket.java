@@ -50,6 +50,7 @@ public class DefaultCheckOutTicket implements CheckOutTicketUseCase {
 
         TicketActivity newTicketActivity = new TicketActivity(
                 TicketAction.CHECK_OUT,
+                checkOutTicketCommand.entranceGate(),
                 LocalDateTime.now()
         );
         scannedTicket.get().getActivityWindow().add(

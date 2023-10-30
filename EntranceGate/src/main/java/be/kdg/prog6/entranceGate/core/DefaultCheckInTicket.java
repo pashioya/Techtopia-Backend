@@ -49,6 +49,7 @@ public class DefaultCheckInTicket implements CheckInTicketUseCase {
 
         TicketActivity newTicketActivity = new TicketActivity(
                 TicketAction.CHECK_IN,
+                checkInTicketCommand.entranceGate(),
                 LocalDateTime.now()
         );
         scannedTicket.get().getActivityWindow().add(

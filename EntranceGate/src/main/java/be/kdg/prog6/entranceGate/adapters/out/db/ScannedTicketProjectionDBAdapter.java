@@ -39,6 +39,7 @@ public class ScannedTicketProjectionDBAdapter implements ScannedTicketProjection
                 scannedTicket.getActivityWindow().add(
                         new TicketActivity(
                                 scannedTicketJpaActivity.getTicketAction(),
+                                scannedTicketJpaActivity.getEntranceGate(),
                                 scannedTicketJpaActivity.getPit()
                         )
                 );

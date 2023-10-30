@@ -15,7 +15,6 @@ public class Visitor {
     private String name;
     private String address;
     private String email;
-    private String phone;
 
 
     public record VisitorUUID(UUID uuid){

@@ -1,4 +1,4 @@
-package be.kdg.prog6.parkInformationSystem.domain.refreshmentStand;
+package be.kdg.prog6.parkInformationSystem.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

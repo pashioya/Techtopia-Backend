@@ -1,6 +1,6 @@
 package be.kdg.prog6.parkInformationSystem.adapters.out;
 
-import be.kdg.prog6.parkInformationSystem.domain.attraction.Attraction;
+import be.kdg.prog6.parkInformationSystem.domain.Attraction;
 import be.kdg.prog6.parkInformationSystem.ports.out.AttractionProjectionPort;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
