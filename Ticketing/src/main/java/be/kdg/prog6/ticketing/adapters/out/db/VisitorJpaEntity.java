@@ -5,10 +5,11 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.NaturalId;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
-@Table(name = "visitor_projection", schema = "ticket")
+@Table(name = "visitor", schema = "ticket.visitor")
 @Getter
 public class VisitorJpaEntity {
 
@@ -18,6 +19,7 @@ public class VisitorJpaEntity {
 
     @NaturalId
     @Setter
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID visitorUUID;
 
     @Setter
@@ -31,5 +33,5 @@ public class VisitorJpaEntity {
     private String email;
 
     @Setter
-    private String phone;
+    private LocalDate dateOfBirth;
 }

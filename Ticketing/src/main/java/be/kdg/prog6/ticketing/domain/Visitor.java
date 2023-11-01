@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -15,8 +16,8 @@ public class Visitor {
     private String name;
     private String address;
     private String email;
+    private LocalDate dateOfBirth;
 
-
-    public record VisitorUUID(UUID uuid){
+    public record VisitorUUID(UUID uuid) {
     }
 }

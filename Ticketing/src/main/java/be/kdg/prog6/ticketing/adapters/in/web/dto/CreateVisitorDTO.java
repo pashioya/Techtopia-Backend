@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @AllArgsConstructor
 @Getter
 @Setter
@@ -11,5 +13,5 @@ public class CreateVisitorDTO {
     private String name;
     private String address;
     private String email;
-    private String phone;
+    private LocalDate dateOfBirth;
 }

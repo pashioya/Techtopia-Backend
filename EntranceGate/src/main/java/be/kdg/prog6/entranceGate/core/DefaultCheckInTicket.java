@@ -6,7 +6,7 @@ import be.kdg.prog6.entranceGate.domain.TicketActivity;
 import be.kdg.prog6.entranceGate.ports.in.CheckInTicketCommand;
 import be.kdg.prog6.entranceGate.ports.in.CheckInTicketUseCase;
 import be.kdg.prog6.entranceGate.ports.out.ScannedTicketActivityCreatePort;
-import be.kdg.prog6.entranceGate.ports.out.ScannedTicketProjectionPort;
+import be.kdg.prog6.entranceGate.ports.out.ScannedTicketLoadPort;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +19,7 @@ import java.util.UUID;
 @Service
 public class DefaultCheckInTicket implements CheckInTicketUseCase {
 
-    private final ScannedTicketProjectionPort scannedTicketProjectionPort;
+    private final ScannedTicketLoadPort scannedTicketLoadPort;
 
     private final List<ScannedTicketActivityCreatePort> scannedTicketActivityCreatePorts;
 
@@ -31,7 +31,7 @@ public class DefaultCheckInTicket implements CheckInTicketUseCase {
 //        Check previous ticket activities to see if the ticket is already checked in
 //        if checked in, throw an exception
 //        if not checked in, create a new ticket activity and save it
-        Optional<ScannedTicket> scannedTicket = scannedTicketProjectionPort
+        Optional<ScannedTicket> scannedTicket = scannedTicketLoadPort
                 .loadScannedTicket(checkInTicketCommand.ticket());
 
         if (scannedTicket.isEmpty()) {

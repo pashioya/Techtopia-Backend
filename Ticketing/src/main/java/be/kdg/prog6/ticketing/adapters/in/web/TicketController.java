@@ -20,13 +20,11 @@ public class TicketController {
     public void createTicket(@PathVariable UUID visitorUUID, @RequestBody CreateTicketDTO createTicketDTO) {
         createTicketUseCase.createTicket(
                 new CreateTicketCommand(
-                                visitorUUID,
-                                createTicketDTO.getTicketDurationType(),
-                                createTicketDTO.getTicketAgeType(),
-                                createTicketDTO.getValidFrom(),
-                                createTicketDTO.getValidUntil()
-                        )
-        );
+                        visitorUUID,
+                        createTicketDTO.getTicketDurationType(),
+                        createTicketDTO.getTicketAgeType(),
+                        createTicketDTO.getValidFrom(),
+                        createTicketDTO.getValidUntil()));
     }
 
 }

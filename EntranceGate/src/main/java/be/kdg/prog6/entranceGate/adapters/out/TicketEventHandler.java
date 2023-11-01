@@ -1,10 +1,10 @@
 package be.kdg.prog6.entranceGate.adapters;
 
-import be.kdg.prog6.common.events.Event;
+import be.kdg.prog6.common.facades.TicketEvent;
 import be.kdg.prog6.common.events.EventCatalog;
 import be.kdg.prog6.common.events.EventMessage;
 
-public interface TicketEventHandler<T extends Event> {
+public interface TicketEventHandler<T extends TicketEvent> {
 
     boolean appliesTo(EventCatalog eventCatalog);
 
@@ -12,7 +12,7 @@ public interface TicketEventHandler<T extends Event> {
         return this;
     }
 
-    Event map(String eventBody);
+    TicketEvent map(String eventBody);
 
-    void handle(Event  ticketEventBody);
+    void handle(TicketEvent ticketTicketEventBody);
 }

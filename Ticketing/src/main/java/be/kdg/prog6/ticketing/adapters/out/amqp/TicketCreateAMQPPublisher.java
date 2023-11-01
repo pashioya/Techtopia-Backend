@@ -5,7 +5,7 @@ import be.kdg.prog6.common.events.EventHeader;
 import be.kdg.prog6.common.events.EventMessage;
 import be.kdg.prog6.ticketing.adapters.config.RabbitMQModuleTopology;
 import be.kdg.prog6.ticketing.domain.Ticket;
-import be.kdg.prog6.common.facades.TicketCreatedEvent;
+import be.kdg.prog6.common.facades.TicketCreatedTicketEvent;
 import be.kdg.prog6.ticketing.ports.out.CreateTicketPort;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,36 +19,34 @@ import java.util.UUID;
 @AllArgsConstructor
 public class TicketCreateAMQPPublisher implements CreateTicketPort {
 
-    private final RabbitTemplate rabbitTemplate;
-    private final ObjectMapper objectMapper;
+        private final RabbitTemplate rabbitTemplate;
+        private final ObjectMapper objectMapper;
 
-    @Override
-    public void ticketCreated(Ticket ticket) {
-        var eventHeader = EventHeader.builder()
-                .eventID(UUID.randomUUID())
-                .eventCatalog(EventCatalog.TICKET_CREATED)
-                .build();
+        @Override
+        public void ticketCreated(Ticket ticket) {
+                var eventHeader = EventHeader.builder()
+                                .eventID(UUID.randomUUID())
+                                .eventCatalog(EventCatalog.TICKET_CREATED)
+                                .build();
 
-        var eventBody = new TicketCreatedEvent(
-                ticket.getTicketUUID().uuid(),
-                ticket.getVisitorUUID().uuid(),
-                ticket.getValidFrom(),
-                ticket.getValidUntil()
-        );
+                var eventBody = new TicketCreatedTicketEvent(
+                                ticket.getTicketUUID().uuid(),
+                                ticket.getVisitorUUID().uuid(),
+                                ticket.getValidFrom(),
+                                ticket.getValidUntil());
 
-        try{
-            rabbitTemplate.convertAndSend(RabbitMQModuleTopology.TICKET_EVENTS_FAN_OUT, "ticket.created",
-                    EventMessage
-                            .builder()
-                            .eventHeader(eventHeader)
-                            .eventBody(objectMapper
-                                    .writeValueAsString(eventBody))
-                            .build());
+                try {
+                        rabbitTemplate.convertAndSend(RabbitMQModuleTopology.TICKET_EVENTS_FAN_OUT, "ticket.created",
+                                        EventMessage
+                                                        .builder()
+                                                        .eventHeader(eventHeader)
+                                                        .eventBody(objectMapper
+                                                                        .writeValueAsString(eventBody))
+                                                        .build());
 
-        } catch ( JsonProcessingException e) {
-            throw new RuntimeException(e);
+                } catch (JsonProcessingException e) {
+                        throw new RuntimeException(e);
+                }
+
         }
-
-
-    }
 }

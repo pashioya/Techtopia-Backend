@@ -1,0 +1,23 @@
+POST http://localhost:8094/visitor
+Content-Type: application/json
+
+{
+  "name": "Bobby",
+  "address": "123 Main St",
+  "email": "helslo@gmsail.com",
+  "dateOfBirth": "1990-01-01"
+}
+
+###
+
+POST http://localhost:8094/visitor/e698d84f-5d4d-4450-87df-89cadd31d343/ticket
+Content-Type: application/json
+
+{
+  "ticketDurationType": "DAY",
+  "ticketAgeType": "ADULT",
+  "validFrom": "2023-11-01T12:00:00",
+  "validUntil": "2023-12-01T14:00:00"
+}
+
+

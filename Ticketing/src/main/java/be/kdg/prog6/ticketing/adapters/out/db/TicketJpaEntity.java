@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(schema = "ticket", name = "ticket.tickets")
+@Table(schema = "ticket", name = "ticket")
 @Getter
 public class TicketJpaEntity {
     @Id

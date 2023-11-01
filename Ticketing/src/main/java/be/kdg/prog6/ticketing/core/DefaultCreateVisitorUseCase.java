@@ -22,8 +22,7 @@ public class DefaultCreateVisitorUseCase implements CreateVisitorUseCase {
                         new Visitor.VisitorUUID(UUID.randomUUID()),
                         createVisitorCommand.name(),
                         createVisitorCommand.address(),
-                        createVisitorCommand.email()
-                )
-        );
+                        createVisitorCommand.email(),
+                        createVisitorCommand.dateOfBirth()));
     }
 }

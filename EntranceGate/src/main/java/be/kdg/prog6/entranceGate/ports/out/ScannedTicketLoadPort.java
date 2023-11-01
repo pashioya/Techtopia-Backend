@@ -5,10 +5,7 @@ import be.kdg.prog6.entranceGate.domain.ScannedTicket;
 import java.util.Optional;
 import java.util.UUID;
 
-public interface ScannedTicketProjectionPort {
+public interface ScannedTicketLoadPort {
 
     Optional<ScannedTicket> loadScannedTicket(UUID ticketUUID);
-
-    void saveScannedTicket(ScannedTicket scannedTicket);
-
 }

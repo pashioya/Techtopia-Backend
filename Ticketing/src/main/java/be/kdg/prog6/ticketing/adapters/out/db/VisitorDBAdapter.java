@@ -19,6 +19,7 @@ public class VisitorDBAdapter implements CreateVisitorPort {
         visitorJpaEntity.setName(visitor.getName());
         visitorJpaEntity.setAddress(visitor.getAddress());
         visitorJpaEntity.setEmail(visitor.getEmail());
+        visitorJpaEntity.setDateOfBirth(visitor.getDateOfBirth());
         visitorRepository.save(visitorJpaEntity);
     }
 }

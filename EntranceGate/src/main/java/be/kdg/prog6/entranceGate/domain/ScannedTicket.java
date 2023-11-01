@@ -13,12 +13,15 @@ import java.util.UUID;
 public class ScannedTicket {
 
     private TicketUUID ticketUUID;
-
+    private VisitorUUID visitorUUID;
     private LocalDateTime validFrom;
     private LocalDateTime validUntil;
-
     private ActivityWindow activityWindow;
-    public record TicketUUID(UUID uuid){
+
+    public record TicketUUID(UUID uuid) {
+    }
+
+    public record VisitorUUID(UUID uuid) {
     }
 
     public boolean isValid() {
