@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.awt.*;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -13,6 +14,7 @@ public class Attraction {
     private AttractionUUID attractionUUID;
     private String name;
     private String description;
+    private Point location;
     private QueGateUUID queGateUUID;
 
     public record AttractionUUID(UUID uuid) {

@@ -1,6 +1,6 @@
 package be.kdg.prog6.entranceGate.core;
 
-import be.kdg.prog6.common.facades.TicketCreatedTicketEvent;
+import be.kdg.prog6.common.facades.ticket.TicketCreatedEvent;
 import be.kdg.prog6.entranceGate.domain.ScannedTicket;
 import be.kdg.prog6.entranceGate.ports.in.ScannedTicketCreatedUseCase;
 import be.kdg.prog6.entranceGate.ports.out.ScannedTicketCreatePort;
@@ -18,7 +18,7 @@ public class DefaultScannedTicketCreatedUseCase implements ScannedTicketCreatedU
     private final ScannedTicketCreatePort scannedTicketCreatePort;
 
         @Override
-        public void createTicket(TicketCreatedTicketEvent event) {
+        public void createTicket(TicketCreatedEvent event) {
             Optional<ScannedTicket> scannedTicket =  scannedTicketCreatedProjector.project(event);
             scannedTicket.ifPresent(scannedTicketCreatePort::createScannedTicket);
         }

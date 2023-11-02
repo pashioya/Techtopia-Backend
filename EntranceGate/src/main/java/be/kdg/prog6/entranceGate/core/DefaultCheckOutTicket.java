@@ -2,7 +2,7 @@ package be.kdg.prog6.entranceGate.core;
 
 
 import be.kdg.prog6.entranceGate.domain.ScannedTicket;
-import be.kdg.prog6.common.facades.TicketAction;
+import be.kdg.prog6.common.facades.ticket.TicketAction;
 import be.kdg.prog6.entranceGate.domain.TicketActivity;
 import be.kdg.prog6.entranceGate.ports.in.CheckOutTicketCommand;
 import be.kdg.prog6.entranceGate.ports.in.CheckOutTicketUseCase;

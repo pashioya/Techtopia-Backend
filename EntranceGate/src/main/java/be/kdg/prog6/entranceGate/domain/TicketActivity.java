@@ -1,6 +1,6 @@
 package be.kdg.prog6.entranceGate.domain;
 
-import be.kdg.prog6.common.facades.TicketAction;
+import be.kdg.prog6.common.facades.ticket.TicketAction;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

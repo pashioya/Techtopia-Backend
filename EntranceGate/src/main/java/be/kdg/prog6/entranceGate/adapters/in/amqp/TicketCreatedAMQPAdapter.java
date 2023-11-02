@@ -1,9 +1,9 @@
 package be.kdg.prog6.entranceGate.adapters.in.amqp;
 
-import be.kdg.prog6.common.facades.TicketEvent;
+import be.kdg.prog6.common.facades.ticket.TicketEvent;
 import be.kdg.prog6.common.events.EventCatalog;
-import be.kdg.prog6.common.facades.TicketCreatedTicketEvent;
-import be.kdg.prog6.entranceGate.adapters.TicketEventHandler;
+import be.kdg.prog6.common.facades.ticket.TicketCreatedEvent;
+import be.kdg.prog6.entranceGate.adapters.out.TicketEventHandler;
 import be.kdg.prog6.entranceGate.ports.in.ScannedTicketCreatedUseCase;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 @AllArgsConstructor
 @Component
-public class TicketCreatedAMQPAdapter implements TicketEventHandler<TicketCreatedTicketEvent> {
+public class TicketCreatedAMQPAdapter implements TicketEventHandler<TicketCreatedEvent> {
 
     private final ObjectMapper objectMapper;
     private final ScannedTicketCreatedUseCase scannedTicketCreatedUseCase;
@@ -25,9 +25,9 @@ public class TicketCreatedAMQPAdapter implements TicketEventHandler<TicketCreate
     }
 
     @Override
-    public TicketCreatedTicketEvent map(String eventBody) {
+    public TicketCreatedEvent map(String eventBody) {
         try {
-            return objectMapper.readValue(eventBody, TicketCreatedTicketEvent.class);
+            return objectMapper.readValue(eventBody, TicketCreatedEvent.class);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -36,6 +36,6 @@ public class TicketCreatedAMQPAdapter implements TicketEventHandler<TicketCreate
     @Override
     public void handle(TicketEvent ticketTicketEventBody) {
         logger.info("Received ticket created event: {}", ticketTicketEventBody);
-        scannedTicketCreatedUseCase.createTicket((TicketCreatedTicketEvent) ticketTicketEventBody);
+        scannedTicketCreatedUseCase.createTicket((TicketCreatedEvent) ticketTicketEventBody);
     }
 }

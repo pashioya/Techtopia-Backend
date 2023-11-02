@@ -5,7 +5,7 @@ import be.kdg.prog6.common.events.EventHeader;
 import be.kdg.prog6.common.events.EventMessage;
 import be.kdg.prog6.ticketing.adapters.config.RabbitMQModuleTopology;
 import be.kdg.prog6.ticketing.domain.Ticket;
-import be.kdg.prog6.common.facades.TicketCreatedTicketEvent;
+import be.kdg.prog6.common.facades.ticket.TicketCreatedEvent;
 import be.kdg.prog6.ticketing.ports.out.CreateTicketPort;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -29,7 +29,7 @@ public class TicketCreateAMQPPublisher implements CreateTicketPort {
                                 .eventCatalog(EventCatalog.TICKET_CREATED)
                                 .build();
 
-                var eventBody = new TicketCreatedTicketEvent(
+                var eventBody = new TicketCreatedEvent(
                                 ticket.getTicketUUID().uuid(),
                                 ticket.getVisitorUUID().uuid(),
                                 ticket.getValidFrom(),

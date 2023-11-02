@@ -1,6 +1,6 @@
 package be.kdg.prog6.entranceGate.adapters.out.db;
 
-import be.kdg.prog6.common.facades.TicketAction;
+import be.kdg.prog6.common.facades.ticket.TicketAction;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

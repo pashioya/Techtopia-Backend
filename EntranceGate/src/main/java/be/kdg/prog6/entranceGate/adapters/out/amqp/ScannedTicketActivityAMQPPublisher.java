@@ -3,7 +3,7 @@ package be.kdg.prog6.entranceGate.adapters.out.amqp;
 import be.kdg.prog6.common.events.EventCatalog;
 import be.kdg.prog6.common.events.EventHeader;
 import be.kdg.prog6.common.events.EventMessage;
-import be.kdg.prog6.common.facades.TicketActivityCreatedEvent;
+import be.kdg.prog6.common.facades.ticket.TicketActivityCreatedEvent;
 import be.kdg.prog6.entranceGate.adapters.config.RabbitMQModuleTopology;
 import be.kdg.prog6.entranceGate.domain.ScannedTicket;
 import be.kdg.prog6.entranceGate.domain.TicketActivity;
