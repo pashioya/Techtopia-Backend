@@ -1,7 +1,8 @@
 package be.keg.prog6.parkOperations.adapters.out.db;
 
-import be.keg.prog6.parkOperations.domain.RefreshmentStandStatus;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.*;
 import org.hibernate.annotations.JdbcTypeCode;
 
@@ -12,23 +13,25 @@ import java.util.UUID;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "refreshment_stand")
+@Table(name = "attraction")
 @Getter
 @ToString
-public class RefreshmentStandJPAEntity {
+public class AttractionJPAEntity {
+
     @Id
     @JdbcTypeCode(Types.VARCHAR)
     private UUID uuid;
 
     @Setter
     private String name;
+
     @Setter
     private String description;
+
     @Setter
     private Point location;
 
+    @JdbcTypeCode(Types.VARCHAR)
     @Setter
-    @Enumerated(EnumType.STRING)
-    private RefreshmentStandStatus refreshmentStandStatus;
-
+    private UUID queGateUUID;
 }
