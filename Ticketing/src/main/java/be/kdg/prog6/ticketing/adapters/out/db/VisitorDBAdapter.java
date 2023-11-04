@@ -29,7 +29,7 @@ public class VisitorDBAdapter implements CreateVisitorPort, LoadVisitorPort {
 
     @Override
     public Optional<Visitor> loadVisitor(UUID visitorUUID) {
-        return visitorRepository.findById(visitorUUID).map(visitorJpaEntity -> new Visitor(
+        return visitorRepository.findByVisitorUUID(visitorUUID).map(visitorJpaEntity -> new Visitor(
                 new Visitor.VisitorUUID(visitorJpaEntity.getVisitorUUID()),
                 visitorJpaEntity.getName(),
                 visitorJpaEntity.getAddress(),

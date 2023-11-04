@@ -39,15 +39,12 @@ public class QueGateController {
 //        TODO: FIX THIS, [org.springframework.web.HttpMediaTypeNotAcceptableException: No acceptable representation]
         return loadQueGateUseCase
                 .loadQueGate(new LoadQueGateCommand(uuid))
-                .map(queGate -> {
-                    queGate.calculateAverageWaitTime();
-                    return new QueGateDTO(
-                            queGate.getMaxCapacity(),
-                            queGate.getCurrentCapacity(),
-                            queGate.getAverageWaitTime(),
-                            queGate.getAttractionUUID().uuid().toString()
-                    );
-                })
+                .map(queGate -> new QueGateDTO(
+                        queGate.getMaxCapacity(),
+                        queGate.getCurrentCapacity(),
+                        queGate.getAverageWaitTime(),
+                        queGate.getAttractionUUID().uuid().toString()
+                ))
                 .orElse(null);
     }
 

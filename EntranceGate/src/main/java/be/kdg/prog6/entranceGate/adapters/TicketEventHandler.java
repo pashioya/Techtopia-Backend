@@ -1,4 +1,4 @@
-package be.kdg.prog6.entranceGate.adapters.out;
+package be.kdg.prog6.entranceGate.adapters;
 
 import be.kdg.prog6.common.facades.ticket.TicketEvent;
 import be.kdg.prog6.common.events.EventCatalog;

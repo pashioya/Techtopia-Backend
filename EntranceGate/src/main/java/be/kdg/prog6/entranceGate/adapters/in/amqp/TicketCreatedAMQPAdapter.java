@@ -3,7 +3,7 @@ package be.kdg.prog6.entranceGate.adapters.in.amqp;
 import be.kdg.prog6.common.facades.ticket.TicketEvent;
 import be.kdg.prog6.common.events.EventCatalog;
 import be.kdg.prog6.common.facades.ticket.TicketCreatedEvent;
-import be.kdg.prog6.entranceGate.adapters.out.TicketEventHandler;
+import be.kdg.prog6.entranceGate.adapters.TicketEventHandler;
 import be.kdg.prog6.entranceGate.ports.in.ScannedTicketCreatedUseCase;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;

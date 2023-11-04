@@ -1,7 +1,12 @@
 package be.keg.prog6.parkOperations.config;
 
+import be.kdg.prog6.common.facades.ticket.TicketAction;
 import be.keg.prog6.parkOperations.adapters.out.db.*;
 import be.keg.prog6.parkOperations.domain.RefreshmentStandStatus;
+import be.keg.prog6.parkOperations.ports.in.CreateRefreshmentStandCommand;
+import be.keg.prog6.parkOperations.ports.in.CreateRefreshmentStandUseCase;
+import be.keg.prog6.parkOperations.ports.in.CreateTicketQueGateActivityCommand;
+import be.keg.prog6.parkOperations.ports.in.CreateTicketQueGateActivityUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -19,17 +24,20 @@ public class DatabaseSeeder implements ApplicationRunner {
 
     private final AttractionRepository attractionRepository;
     private final QueGateRepository queGateRepository;
-    private final RefreshmentStandRepository refreshmentStandRepository;
+    private final CreateRefreshmentStandUseCase createRefreshmentStandUseCase;
+    private final CreateTicketQueGateActivityUseCase createTicketQueGateActivityUseCase;
 
     public void seed() {
         List<AttractionJPAEntity> attractions = new ArrayList<>();
 
         List<UUID> queGateUUIDs = new ArrayList<>();
         List<UUID> attractionUUIDs = new ArrayList<>();
+        List<UUID> ticketUUIDs = new ArrayList<>();
 
         for (int i = 0; i < 4; i++) {
             queGateUUIDs.add(UUID.randomUUID());
             attractionUUIDs.add(UUID.randomUUID());
+            ticketUUIDs.add(UUID.randomUUID());
 
             QueGateJPAEntity queGate = new QueGateJPAEntity(
                     queGateUUIDs.get(i),
@@ -111,8 +119,52 @@ public class DatabaseSeeder implements ApplicationRunner {
                 queGateUUIDs.get(3)
         ));
 
-        refreshmentStandRepository.saveAll(refreshmentStands);
         attractionRepository.saveAll(attractions);
+
+        refreshmentStands.forEach(
+                rs ->
+                        createRefreshmentStandUseCase.createRefreshmentStand(
+                                new CreateRefreshmentStandCommand(
+                                        rs.getName(),
+                                        rs.getDescription(),
+                                        rs.getLocation()
+                                )
+                        )
+        );
+
+
+
+        createTicketQueGateActivityUseCase.createTicketQueGateActivity(
+                new CreateTicketQueGateActivityCommand(
+                        queGateUUIDs.get(0),
+                        ticketUUIDs.get(0),
+                        TicketAction.CHECK_IN
+                )
+        );
+
+        createTicketQueGateActivityUseCase.createTicketQueGateActivity(
+                new CreateTicketQueGateActivityCommand(
+                        queGateUUIDs.get(0),
+                        ticketUUIDs.get(0),
+                        TicketAction.CHECK_OUT
+                )
+        );
+
+        createTicketQueGateActivityUseCase.createTicketQueGateActivity(
+                new CreateTicketQueGateActivityCommand(
+                        queGateUUIDs.get(0),
+                        ticketUUIDs.get(1),
+                        TicketAction.CHECK_IN
+                )
+        );
+
+        createTicketQueGateActivityUseCase.createTicketQueGateActivity(
+                new CreateTicketQueGateActivityCommand(
+                        queGateUUIDs.get(2),
+                        ticketUUIDs.get(2),
+                        TicketAction.CHECK_IN
+                )
+        );
     }
 
     @Override
