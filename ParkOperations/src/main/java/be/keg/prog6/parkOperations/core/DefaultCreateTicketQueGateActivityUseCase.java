@@ -20,7 +20,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class DefaultCreateTicketQueGateActivityUseCase implements CreateTicketQueGateActivityUseCase {
 
-    private final CreateTicketQueGateActivityPort createTicketQueGateActivityPort;
+    private final List<CreateTicketQueGateActivityPort> createTicketQueGateActivityPorts;
     private final CreateTicketInQuePort createTicketInQuePort;
     private final UpdateTicketInQuePort updateTicketInQuePort;
     private final LoadQueGatePort loadQueGatePort;
@@ -28,12 +28,14 @@ public class DefaultCreateTicketQueGateActivityUseCase implements CreateTicketQu
     private final LoadTicketInQuePort loadTicketInQuePort;
     @Override
     public void createTicketQueGateActivity(CreateTicketQueGateActivityCommand createTicketQueGateActivityCommand) {
-        createTicketQueGateActivityPort.createTicketQueGateActivity(
-                new TicketQueGateActivity(
-                        createTicketQueGateActivityCommand.ticketUUID(),
-                        createTicketQueGateActivityCommand.queGateUUID(),
-                        createTicketQueGateActivityCommand.ticketAction(),
-                        Instant.now()
+        createTicketQueGateActivityPorts.forEach(
+                port -> port.createTicketQueGateActivity(
+                        new TicketQueGateActivity(
+                                createTicketQueGateActivityCommand.ticketUUID(),
+                                createTicketQueGateActivityCommand.queGateUUID(),
+                                createTicketQueGateActivityCommand.ticketAction(),
+                                Instant.now()
+                        )
                 )
         );
 

@@ -7,6 +7,7 @@ import be.kdg.prog6.common.facades.attraction.AttractionCreatedEvent;
 import be.keg.prog6.parkOperations.adapters.config.RabbitMQModuleTopology;
 import be.keg.prog6.parkOperations.domain.Attraction;
 import be.keg.prog6.parkOperations.ports.out.CreateAttractionPort;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
@@ -22,7 +23,7 @@ public class AttractionCreatedAMQPPublisher implements CreateAttractionPort {
 
     private final RabbitTemplate rabbitTemplate;
     private final ObjectMapper objectMapper;
-    private final Logger logger = LoggerFactory.getLogger(RefreshmentStandCreatedAMQPPublisher.class);
+    private final Logger logger = LoggerFactory.getLogger(AttractionCreatedAMQPPublisher.class);
 
     @Override
     public void createAttraction(Attraction attraction) {
@@ -43,7 +44,7 @@ public class AttractionCreatedAMQPPublisher implements CreateAttractionPort {
                             .eventBody(objectMapper.writeValueAsString(eventBody))
                             .build());
         }
-        catch (Exception e){
+        catch (JsonProcessingException e){
             throw new RuntimeException(e);
         }
     }
