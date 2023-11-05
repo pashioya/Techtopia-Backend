@@ -23,15 +23,15 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:8093/queGate/675a606b-8ba0-4462-a75a-e438fa221a01
+GET http://localhost:8093/queGate/27eabf78-73a9-49b5-b33f-e7517047cecd
 ###
 
 POST http://localhost:8093/queGate/checkIn
 Content-Type: application/json
 
 {
-  "ticketUUID": "e698d84f-5d4d-4450-87df-89cadd31d343",
-  "queGateUUID": "64dc2a96-a567-4b2f-854d-8c5a2bf1cca6",
+  "ticketUUID": "085375d0-8b31-44af-beae-04282d6dd150",
+  "queGateUUID": "f63bb81b-321b-4e0a-9003-4e2abeebea1e",
   "ticketAction": "CHECK_IN"
 }
 ###
@@ -40,8 +40,8 @@ POST http://localhost:8093/queGate/checkOut
 Content-Type: application/json
 
 {
-  "ticketUUID": "e698d84f-5d4d-4450-87df-89cadd31d343",
-  "queGateUUID": "64dc2a96-a567-4b2f-854d-8c5a2bf1cca6",
+  "ticketUUID": "93f157da-a820-491a-98dc-3cad3f851bac",
+  "queGateUUID": "27eabf78-73a9-49b5-b33f-e7517047cecd",
   "ticketAction": "CHECK_OUT"
 }
 

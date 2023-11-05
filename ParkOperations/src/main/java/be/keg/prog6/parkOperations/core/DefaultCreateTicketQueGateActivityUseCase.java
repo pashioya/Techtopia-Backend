@@ -45,10 +45,7 @@ public class DefaultCreateTicketQueGateActivityUseCase implements CreateTicketQu
                     createTicketQueGateActivityCommand.queGateUUID()
             ));
             queGateOptional.ifPresent(
-                    qG -> {
-                        qG.setCurrentCapacity(qG.getCurrentCapacity()+1);
-                        qG.setAverageWaitTime(calcAverageWaitTime(createTicketQueGateActivityCommand.queGateUUID()));
-                    }
+                    qG -> qG.setCurrentCapacity(qG.getCurrentCapacity() + 1)
             );
         }
 
@@ -59,7 +56,7 @@ public class DefaultCreateTicketQueGateActivityUseCase implements CreateTicketQu
             ));
             queGateOptional.ifPresent(
                     qG -> {
-                        qG.setCurrentCapacity(qG.getCurrentCapacity()+1);
+                        qG.setCurrentCapacity(qG.getCurrentCapacity() - 1);
                         qG.setAverageWaitTime(calcAverageWaitTime(createTicketQueGateActivityCommand.queGateUUID()));
                     }
             );
