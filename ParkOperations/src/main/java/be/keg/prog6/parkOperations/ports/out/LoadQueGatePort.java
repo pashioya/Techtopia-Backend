@@ -9,5 +9,7 @@ import java.util.UUID;
 public interface LoadQueGatePort {
         Optional<QueGate> loadQueGate(UUID uuid);
 
+        Optional<QueGate> loadQueGateByAttractionUUID(UUID attractionUUID);
+
         List<QueGate> loadAllQueGates();
 }

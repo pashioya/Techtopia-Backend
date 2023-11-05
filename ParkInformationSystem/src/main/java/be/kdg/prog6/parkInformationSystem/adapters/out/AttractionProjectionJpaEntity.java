@@ -1,38 +1,36 @@
 package be.kdg.prog6.parkInformationSystem.adapters.out;
 
-import be.kdg.prog6.parkInformationSystem.domain.AttractionStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 
 import java.sql.Types;
-import java.util.UUID;
+import java.time.Duration;
 
 @Entity
-@Table(schema = "attractions",name = "gpa.attraction_projection")
+@Table(name = "attraction_projection")
 @Getter
+@NoArgsConstructor
 public class AttractionProjectionJpaEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(name = "attraction_uuid")
     @JdbcTypeCode(Types.VARCHAR)
     @Setter
     private String attractionUUID;
-
     @Setter
     private String name;
-
     @Setter
     private String description;
-
     @Setter
-    private AttractionStatus status;
-
+    private int currentCapacity;
     @Setter
-    private UUID queGateUUID;
+    private int maxCapacity;
+    @Setter
+    private Duration averageWaitTime;
 
 }

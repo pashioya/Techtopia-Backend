@@ -1,22 +1,20 @@
-package be.kdg.prog6.parkInformationSystem.domain;
+package be.kdg.prog6.parkInformationSystem.adapters.in.web;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.time.Duration;
-import java.util.UUID;
 
 @AllArgsConstructor
+@ToString
 @Getter
 @Setter
-public class Attraction {
-    private AttractionUUID attractionUUID;
+public class AttractionDTO {
     private String name;
     private String description;
     private int currentCapacity;
     private int maxCapacity;
     private Duration averageWaitTime;
-    public record AttractionUUID(UUID uuid) {
-    }
 }

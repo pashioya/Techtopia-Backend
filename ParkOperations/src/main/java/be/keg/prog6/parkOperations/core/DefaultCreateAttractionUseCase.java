@@ -25,6 +25,12 @@ public class DefaultCreateAttractionUseCase implements CreateAttractionUseCase  
         UUID attractionUUID = UUID.randomUUID();
         UUID queGateUUID = UUID.randomUUID();
 
+        createQueGatePort.createQueGate(new QueGate(
+                queGateUUID,
+                command.queGateMaxCapacity(),
+                attractionUUID
+        ));
+
         createAttractionPorts.forEach(
                 port -> port.createAttraction(new Attraction(
                         attractionUUID,
@@ -36,11 +42,6 @@ public class DefaultCreateAttractionUseCase implements CreateAttractionUseCase  
         )
         );
 
-        createQueGatePort.createQueGate(new QueGate(
-                queGateUUID,
-                command.queGateMaxCapacity(),
-                attractionUUID
-        ));
 
     }
 }

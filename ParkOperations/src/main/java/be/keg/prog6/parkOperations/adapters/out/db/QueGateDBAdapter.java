@@ -36,6 +36,23 @@ public class QueGateDBAdapter implements LoadQueGatePort, UpdateQueGatePort, Cre
     }
 
     @Override
+    public Optional<QueGate> loadQueGateByAttractionUUID(UUID attractionUUID) {
+        return queGateRepository.findByAttractionUUID(attractionUUID).map(
+                queGateJPAEntity -> {
+                    List<TicketInQue> ticketsInQueue = new ArrayList<>();
+                    return new QueGate(
+                            new QueGate.QueGateUUID(queGateJPAEntity.getQueGateUUID()),
+                            queGateJPAEntity.getMaxCapacity(),
+                            queGateJPAEntity.getCurrentCapacity(),
+                            queGateJPAEntity.getAverageWaitTime(),
+                            new QueGate.AttractionUUID(queGateJPAEntity.getAttractionUUID()),
+                            ticketsInQueue
+                    );
+                }
+        );
+    }
+
+    @Override
     public List<QueGate> loadAllQueGates() {
         return queGateRepository.findAll().stream().map(
                 queGateJPAEntity ->

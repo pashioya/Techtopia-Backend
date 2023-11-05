@@ -6,7 +6,9 @@ import be.kdg.prog6.common.events.EventMessage;
 import be.kdg.prog6.common.facades.attraction.AttractionCreatedEvent;
 import be.keg.prog6.parkOperations.adapters.config.RabbitMQModuleTopology;
 import be.keg.prog6.parkOperations.domain.Attraction;
+import be.keg.prog6.parkOperations.domain.QueGate;
 import be.keg.prog6.parkOperations.ports.out.CreateAttractionPort;
+import be.keg.prog6.parkOperations.ports.out.LoadQueGatePort;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
@@ -15,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
 import java.util.UUID;
 
 @Component
@@ -25,16 +28,23 @@ public class AttractionCreatedAMQPPublisher implements CreateAttractionPort {
     private final ObjectMapper objectMapper;
     private final Logger logger = LoggerFactory.getLogger(AttractionCreatedAMQPPublisher.class);
 
+
+    private final LoadQueGatePort loadQueGatePort;
     @Override
     public void createAttraction(Attraction attraction) {
         logger.info("Publishing attraction created event");
+
+        Optional<QueGate> queGate = loadQueGatePort.loadQueGateByAttractionUUID(attraction.getAttractionUUID().uuid());
+
 
         var eventHeader = EventHeader.builder().eventID(UUID.randomUUID()).eventCatalog(EventCatalog.ATTRACTION_CREATED).build();
         var eventBody = new AttractionCreatedEvent(
                 attraction.getAttractionUUID().uuid(),
                 attraction.getQueGateUUID().uuid(),
                 attraction.getName(),
-                attraction.getDescription()
+                attraction.getDescription(),
+                queGate.get().getMaxCapacity(),
+                queGate.get().getAverageWaitTime()
         );
 
         try{
