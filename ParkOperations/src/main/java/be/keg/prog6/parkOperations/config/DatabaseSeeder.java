@@ -39,7 +39,7 @@ public class DatabaseSeeder implements ApplicationRunner {
                     new CreateRefreshmentStandCommand(
                             "Test Refreshment Stand 4",
                             "Test Refreshment Stand Description 4",
-                            new Point(random.nextInt(100) + 1, random.nextInt(100) + 1)
+                            new Point(random.nextInt(80) + 20, random.nextInt(80) + 20)
                     )
             );
         }
@@ -49,7 +49,7 @@ public class DatabaseSeeder implements ApplicationRunner {
                     new CreateAttractionCommand(
                             "Test Attraction" + i,
                             "Test Attraction Description" + i,
-                            new Point(6, 9),
+                            new Point(random.nextInt(80) + 20, random.nextInt(80) + 20),
                             35
                     )
             );

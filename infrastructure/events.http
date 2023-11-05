@@ -66,3 +66,8 @@ Content-Type: application/json
 GET http://localhost:8092/interactiveMap
 
 
+###
+
+GET http://localhost:8092/attractions
+
+

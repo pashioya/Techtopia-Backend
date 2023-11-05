@@ -59,6 +59,7 @@ public class AttractionProjectionDBAdapter implements LoadAttractionPort, Create
         attractionProjectionJpaEntity.setCurrentCapacity(attraction.getCurrentCapacity());
         attractionProjectionJpaEntity.setMaxCapacity(attraction.getMaxCapacity());
         attractionProjectionJpaEntity.setAverageWaitTime(attraction.getAverageWaitTime());
+        attractionProjectionJpaEntity.setLocation(attraction.getLocation());
 
         attractionProjectionRepository.save(attractionProjectionJpaEntity);
     }

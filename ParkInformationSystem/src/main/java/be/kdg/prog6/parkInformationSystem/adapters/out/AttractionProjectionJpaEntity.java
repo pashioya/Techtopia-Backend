@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
+import org.springframework.lang.NonNull;
 
 import java.awt.*;
 import java.sql.Types;
