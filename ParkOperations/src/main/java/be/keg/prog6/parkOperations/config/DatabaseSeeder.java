@@ -161,7 +161,22 @@ public class DatabaseSeeder implements ApplicationRunner {
         createTicketQueGateActivityUseCase.createTicketQueGateActivity(
                 new CreateTicketQueGateActivityCommand(
                         ticketUUIDs.get(2),
-                        queGateUUIDs.get(0),
+                        queGateUUIDs.get(1),
+                        TicketAction.CHECK_IN
+                )
+        );
+
+        createTicketQueGateActivityUseCase.createTicketQueGateActivity(
+                new CreateTicketQueGateActivityCommand(
+                        ticketUUIDs.get(3),
+                        queGateUUIDs.get(2),
+                        TicketAction.CHECK_IN
+                )
+        );
+        createTicketQueGateActivityUseCase.createTicketQueGateActivity(
+                new CreateTicketQueGateActivityCommand(
+                        ticketUUIDs.get(3),
+                        queGateUUIDs.get(2),
                         TicketAction.CHECK_IN
                 )
         );

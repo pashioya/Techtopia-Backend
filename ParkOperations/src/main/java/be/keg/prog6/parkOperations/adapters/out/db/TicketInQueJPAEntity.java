@@ -20,11 +20,9 @@ public class TicketInQueJPAEntity {
     @GeneratedValue(strategy = GenerationType.UUID)
     UUID uuid;
 
-    @JdbcTypeCode(Types.VARCHAR)
     @Setter
     UUID ticketUUID;
 
-    @JdbcTypeCode(Types.VARCHAR)
     @Setter
     UUID queGateUUID;
 

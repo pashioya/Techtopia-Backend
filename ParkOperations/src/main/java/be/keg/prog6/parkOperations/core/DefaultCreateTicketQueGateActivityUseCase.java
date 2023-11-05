@@ -70,7 +70,7 @@ public class DefaultCreateTicketQueGateActivityUseCase implements CreateTicketQu
 
     private Duration calcAverageWaitTime(UUID queUUID){
         List<TicketInQue> checkedOutTicketsInQueue = loadTicketInQuePort.loadCheckedOutTicketsInQueFromTodayByQueUUID(queUUID);
-
+        if (checkedOutTicketsInQueue.isEmpty()) return Duration.ZERO;
         return checkedOutTicketsInQueue.stream()
                 .map(ticket -> Duration.between(ticket.getEntryTime(), ticket.getExitTime()))
                 .reduce(Duration.ZERO, Duration::plus)
