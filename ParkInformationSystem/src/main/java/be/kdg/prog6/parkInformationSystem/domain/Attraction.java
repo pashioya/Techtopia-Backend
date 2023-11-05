@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.awt.*;
 import java.time.Duration;
 import java.util.UUID;
 
@@ -17,6 +18,7 @@ public class Attraction {
     private int currentCapacity;
     private int maxCapacity;
     private Duration averageWaitTime;
+    private Point location;
     public record AttractionUUID(UUID uuid) {
     }
 }

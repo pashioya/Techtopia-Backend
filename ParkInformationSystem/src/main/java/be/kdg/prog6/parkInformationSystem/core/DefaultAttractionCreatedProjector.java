@@ -19,7 +19,8 @@ public class DefaultAttractionCreatedProjector implements AttractionCreatedProje
                         attractionCreatedEvent.description(),
                         0,
                         attractionCreatedEvent.maxCapacity(),
-                        Duration.ZERO
+                        Duration.ZERO,
+                        attractionCreatedEvent.location()
                 )
         );
     }

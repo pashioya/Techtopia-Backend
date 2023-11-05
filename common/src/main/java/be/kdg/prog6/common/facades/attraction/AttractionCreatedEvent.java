@@ -1,5 +1,6 @@
 package be.kdg.prog6.common.facades.attraction;
 
+import java.awt.*;
 import java.time.Duration;
 import java.util.UUID;
 
@@ -9,6 +10,7 @@ public record AttractionCreatedEvent(
         String name,
         String description,
         int maxCapacity,
-        Duration averageWaitTime
+        Duration averageWaitTime,
+        Point location
 ) implements AttractionEvent{
 }

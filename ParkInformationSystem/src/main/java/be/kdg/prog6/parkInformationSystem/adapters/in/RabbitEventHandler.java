@@ -35,4 +35,22 @@ import java.util.List;
                     );
         }
 
+        @RabbitListener(queues = RabbitMQModuleTopology.REFRESHMENT_STAND_CREATED, messageConverter = "#{jackson2JsonMessageConverter}")
+        public void receiveRefreshmentStandEventMessage(EventMessage eventMessage) {
+            logger.info("Received event message: {}", eventMessage);
+            attractionEventHandlers.stream()
+                    .filter(
+                            attractionEventHandler ->
+                                    attractionEventHandler.appliesTo(
+                                            eventMessage.getEventHeader().getEventCatalog()
+                                    )
+                    )
+                    .forEach(
+                            attractionEventHandler ->
+                                    attractionEventHandler.receive(eventMessage).handle(
+                                            attractionEventHandler.map(eventMessage.getEventBody())
+                                    )
+                    );
+        }
+
 }

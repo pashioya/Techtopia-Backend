@@ -12,7 +12,7 @@ import java.util.UUID;
 
 @Component
 @AllArgsConstructor
-public class ProjectionDBAdapterAttraction implements LoadAttractionPort, CreateAttractionPort {
+public class AttractionProjectionDBAdapter implements LoadAttractionPort, CreateAttractionPort {
 
     private final AttractionProjectionRepository attractionProjectionRepository;
 
@@ -25,7 +25,8 @@ public class ProjectionDBAdapterAttraction implements LoadAttractionPort, Create
                     attractionJpaEntity.get().getDescription(),
                     attractionJpaEntity.get().getCurrentCapacity(),
                     attractionJpaEntity.get().getMaxCapacity(),
-                    attractionJpaEntity.get().getAverageWaitTime()
+                    attractionJpaEntity.get().getAverageWaitTime(),
+                    attractionJpaEntity.get().getLocation()
             );
             return Optional.of(attraction);
         }
@@ -42,7 +43,8 @@ public class ProjectionDBAdapterAttraction implements LoadAttractionPort, Create
                         attractionProjectionJpaEntity.getDescription(),
                         attractionProjectionJpaEntity.getCurrentCapacity(),
                         attractionProjectionJpaEntity.getMaxCapacity(),
-                        attractionProjectionJpaEntity.getAverageWaitTime()
+                        attractionProjectionJpaEntity.getAverageWaitTime(),
+                        attractionProjectionJpaEntity.getLocation()
                 )
         ).toList();
     }

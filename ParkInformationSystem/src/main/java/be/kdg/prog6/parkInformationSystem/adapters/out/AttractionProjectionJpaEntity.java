@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 
+import java.awt.*;
 import java.sql.Types;
 import java.time.Duration;
 
@@ -32,5 +33,7 @@ public class AttractionProjectionJpaEntity {
     private int maxCapacity;
     @Setter
     private Duration averageWaitTime;
+    @Setter
+    private Point location;
 
 }

@@ -44,7 +44,8 @@ public class AttractionCreatedAMQPPublisher implements CreateAttractionPort {
                 attraction.getName(),
                 attraction.getDescription(),
                 queGate.get().getMaxCapacity(),
-                queGate.get().getAverageWaitTime()
+                queGate.get().getAverageWaitTime(),
+                attraction.getLocation()
         );
 
         try{
