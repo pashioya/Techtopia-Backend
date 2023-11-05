@@ -1,5 +1,8 @@
 package be.kdg.prog6.parkInformationSystem.domain;
 
+import be.kdg.prog6.parkInformationSystem.adapters.in.web.dto.AttractionDTO;
+import be.kdg.prog6.parkInformationSystem.adapters.in.web.dto.PointOfInterestDTO;
+import be.kdg.prog6.parkInformationSystem.adapters.in.web.dto.RefreshmentStandDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,9 +16,9 @@ import java.util.List;
 @NoArgsConstructor
 public class InteractiveMap {
 
-    List<Attraction> attractions;
-    List<RefreshmentStand> refreshmentStands;
-    List<PointOfInterest> pointsOfInterest;
+    List<AttractionDTO> attractions;
+    List<RefreshmentStandDTO> refreshmentStands;
+    List<PointOfInterestDTO> pointsOfInterest;
 
 
 }

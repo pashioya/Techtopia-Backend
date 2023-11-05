@@ -6,6 +6,7 @@ import be.kdg.prog6.ticketing.ports.out.LoadVisitorPort;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -36,5 +37,18 @@ public class VisitorDBAdapter implements CreateVisitorPort, LoadVisitorPort {
                 visitorJpaEntity.getEmail(),
                 visitorJpaEntity.getDateOfBirth()
         ));
+    }
+
+    @Override
+    public List<Visitor> loadAllVisitors() {
+        return visitorRepository.findAll().stream().map(
+                visitorJpaEntity -> new Visitor(
+                        new Visitor.VisitorUUID(visitorJpaEntity.getVisitorUUID()),
+                        visitorJpaEntity.getName(),
+                        visitorJpaEntity.getAddress(),
+                        visitorJpaEntity.getEmail(),
+                        visitorJpaEntity.getDateOfBirth()
+                )
+        ).toList();
     }
 }

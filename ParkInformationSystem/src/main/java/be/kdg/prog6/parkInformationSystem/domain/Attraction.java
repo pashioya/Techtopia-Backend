@@ -1,5 +1,6 @@
 package be.kdg.prog6.parkInformationSystem.domain;
 
+import be.kdg.prog6.parkInformationSystem.adapters.in.web.dto.AttractionDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,6 +20,11 @@ public class Attraction {
     private int maxCapacity;
     private Duration averageWaitTime;
     private Point location;
+
+    public AttractionDTO toDTO() {
+        return new AttractionDTO(name, description, currentCapacity, maxCapacity, averageWaitTime, location);
+    }
+
     public record AttractionUUID(UUID uuid) {
     }
 }

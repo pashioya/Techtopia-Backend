@@ -1,3 +1,5 @@
+#CREATEING A VISIOT
+
 POST http://localhost:8094/visitor
 Content-Type: application/json
 
@@ -10,6 +12,8 @@ Content-Type: application/json
 
 ###
 
+#CREATING A TICKET FOR THE CREATED VISITOR
+
 POST http://localhost:8094/visitor/b8d3d33e-bcf9-46b5-b588-053d0551c71f/ticket
 Content-Type: application/json
 
@@ -19,6 +23,18 @@ Content-Type: application/json
   "validFrom": "2023-11-01T12:00:00",
   "validUntil": "2023-12-01T14:00:00"
 }
+###
+
+#Checkking if a ticket is valid
+
+GET http://localhost:8091/ticket/bf518f6d-f6c7-42ff-95e9-e7e58646803d
+
+###
+#Checking IN THE TICKET AT THE MAIN ENTRANCE GATES
+
+POST  http://localhost:8091/gate/{gateUUID}/ticket/{ticketUUID}/checkIn
+
+
 
 
 ###
@@ -30,8 +46,8 @@ POST http://localhost:8093/queGate/checkIn
 Content-Type: application/json
 
 {
-  "ticketUUID": "085375d0-8b31-44af-beae-04282d6dd150",
-  "queGateUUID": "f63bb81b-321b-4e0a-9003-4e2abeebea1e",
+  "ticketUUID": "bf518f6d-f6c7-42ff-95e9-e7e58646803d",
+  "queGateUUID": "409b9216-830c-421f-9221-f6ef6b468c89",
   "ticketAction": "CHECK_IN"
 }
 ###

@@ -1,5 +1,6 @@
 package be.kdg.prog6.parkInformationSystem.domain;
 
+import be.kdg.prog6.parkInformationSystem.adapters.in.web.dto.RefreshmentStandDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,6 +17,10 @@ public class RefreshmentStand {
     private String description;
     private Point location;
     private RefreshmentStandStatus status;
+
+    public RefreshmentStandDTO toDTO() {
+        return new RefreshmentStandDTO(name, description, location, status);
+    }
 
     public record RefreshmentStandUUID(UUID uuid) {
     }
