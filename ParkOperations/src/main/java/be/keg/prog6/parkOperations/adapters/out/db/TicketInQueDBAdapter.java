@@ -31,9 +31,22 @@ public class TicketInQueDBAdapter implements CreateTicketInQuePort, LoadTicketIn
 
     @Override
     public List<TicketInQue> loadTicketsInQueFromTodayByQueUUID(UUID queUUID) {
-        return  ticketInQueRepository.findAllFromTodayByQueGateUUID().stream().map(
+        return  ticketInQueRepository.findAllFromTodayByQueGateUUID(queUUID).stream().map(
                 ticketInQueJPAEntity -> new TicketInQue(
-                        ticketInQueJPAEntity.getId(),
+                        ticketInQueJPAEntity.getUuid(),
+                        ticketInQueJPAEntity.getTicketUUID(),
+                        ticketInQueJPAEntity.getQueGateUUID(),
+                        ticketInQueJPAEntity.getEntryTime(),
+                        ticketInQueJPAEntity.getExitTime()
+                )
+        ).toList();
+    }
+
+    @Override
+    public List<TicketInQue> loadCheckedOutTicketsInQueFromTodayByQueUUID(UUID queUUID) {
+        return  ticketInQueRepository.findAllCheckedOutTicketsFromTodayBYQueGateUUID(queUUID).stream().map(
+                ticketInQueJPAEntity -> new TicketInQue(
+                        ticketInQueJPAEntity.getUuid(),
                         ticketInQueJPAEntity.getTicketUUID(),
                         ticketInQueJPAEntity.getQueGateUUID(),
                         ticketInQueJPAEntity.getEntryTime(),
@@ -44,7 +57,7 @@ public class TicketInQueDBAdapter implements CreateTicketInQuePort, LoadTicketIn
 
     @Override
     public void updateTicketInQue(TicketInQue ticketInQue) {
-        ticketInQueRepository.findById(ticketInQue.getId()).ifPresent(
+        ticketInQueRepository.findById(ticketInQue.getUuid()).ifPresent(
                 ticketInQueJPAEntity -> {
                     ticketInQueJPAEntity.setExitTime(ticketInQue.getExitTime());
                     ticketInQueRepository.save(ticketInQueJPAEntity);

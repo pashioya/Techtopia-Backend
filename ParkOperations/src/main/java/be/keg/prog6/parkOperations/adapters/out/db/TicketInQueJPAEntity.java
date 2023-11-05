@@ -17,8 +17,8 @@ import java.util.UUID;
 public class TicketInQueJPAEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    UUID uuid;
 
     @JdbcTypeCode(Types.VARCHAR)
     @Setter

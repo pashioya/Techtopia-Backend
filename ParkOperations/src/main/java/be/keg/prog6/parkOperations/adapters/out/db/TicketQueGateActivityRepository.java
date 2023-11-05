@@ -7,8 +7,5 @@ import java.util.List;
 import java.util.UUID;
 
 public interface TicketQueGateActivityRepository extends JpaRepository<TicketQueGateActivityJPAEntity, UUID>{
-
-    List<TicketQueGateActivityJPAEntity> findByTicketUUID(UUID ticketUUID);
-
     List<TicketQueGateActivity> findByQueGateUUID(UUID queGateUUID);
 }

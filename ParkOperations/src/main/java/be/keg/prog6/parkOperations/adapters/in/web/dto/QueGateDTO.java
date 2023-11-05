@@ -1,4 +1,4 @@
-package be.keg.prog6.parkOperations.adapters.in.web;
+package be.keg.prog6.parkOperations.adapters.in.web.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.ToString;

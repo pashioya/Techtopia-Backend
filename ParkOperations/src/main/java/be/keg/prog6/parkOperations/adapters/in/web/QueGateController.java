@@ -1,5 +1,6 @@
 package be.keg.prog6.parkOperations.adapters.in.web;
 
+import be.keg.prog6.parkOperations.adapters.in.web.dto.QueGateDTO;
 import be.keg.prog6.parkOperations.ports.in.CreateTicketQueGateActivityCommand;
 import be.keg.prog6.parkOperations.ports.in.CreateTicketQueGateActivityUseCase;
 import be.keg.prog6.parkOperations.ports.in.LoadQueGateCommand;

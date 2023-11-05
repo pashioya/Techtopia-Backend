@@ -8,4 +8,6 @@ import java.util.UUID;
 public interface LoadTicketInQuePort {
 
     List<TicketInQue> loadTicketsInQueFromTodayByQueUUID(UUID queUUID);
+
+    List<TicketInQue> loadCheckedOutTicketsInQueFromTodayByQueUUID(UUID queUUID);
 }
