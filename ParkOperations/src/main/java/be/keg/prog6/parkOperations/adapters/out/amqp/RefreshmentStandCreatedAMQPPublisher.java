@@ -2,6 +2,7 @@ package be.keg.prog6.parkOperations.adapters.out.amqp;
 
 import be.kdg.prog6.common.events.EventCatalog;
 import be.kdg.prog6.common.events.EventHeader;
+import be.kdg.prog6.common.events.EventMessage;
 import be.kdg.prog6.common.facades.refreshmentStand.RefreshmentStandCreatedEvent;
 import be.keg.prog6.parkOperations.adapters.config.RabbitMQModuleTopology;
 import be.keg.prog6.parkOperations.domain.RefreshmentStand;
@@ -35,7 +36,11 @@ public class RefreshmentStandCreatedAMQPPublisher implements CreateRefreshmentSt
                 refreshmentStand.getLocation()
         );
         try{
-            rabbitTemplate.convertAndSend(RabbitMQModuleTopology.RefreshmentStand_EVENTS_FAN_OUT, "refreshmentStand.created", objectMapper.writeValueAsString(eventBody));
+            rabbitTemplate.convertAndSend(RabbitMQModuleTopology.REFRESHMENT_STAND_CREATED,
+                    "refreshment-stand.created",
+                    EventMessage.builder().eventHeader(eventHeader)
+                            .eventBody(objectMapper.writeValueAsString(eventBody))
+                            .build());
         }
         catch (JsonProcessingException e){
             throw new RuntimeException(e);

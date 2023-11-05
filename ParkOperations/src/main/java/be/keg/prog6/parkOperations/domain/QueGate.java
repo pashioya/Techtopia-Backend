@@ -24,4 +24,13 @@ public class QueGate {
 
     public record AttractionUUID(UUID uuid) {
     }
+
+    public QueGate(UUID queGateUUID,int maxCapacity, UUID attractionUUID) {
+        this(new QueGateUUID(queGateUUID),
+                maxCapacity,
+                0,
+                Duration.ZERO,
+                new AttractionUUID(attractionUUID),
+                List.of());
+    }
 }

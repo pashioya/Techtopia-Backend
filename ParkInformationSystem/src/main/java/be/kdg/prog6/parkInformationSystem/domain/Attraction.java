@@ -16,9 +16,4 @@ public class Attraction {
     private AttractionStatus status;
     public record AttractionUUID(UUID uuid) {
     }
-
-    public record QueGateUUID(UUID uuid) {
-    }
-
-
 }

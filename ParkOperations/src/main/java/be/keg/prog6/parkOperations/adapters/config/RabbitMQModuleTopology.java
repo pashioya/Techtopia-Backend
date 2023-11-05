@@ -10,24 +10,53 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitMQModuleTopology {
 
+    public static final String REFRESHMENT_STAND_CREATED = "refreshment-stand.created";
+    public static final String ATTRACTION_CREATED = "attraction.created";
 
-    public static final String RefreshmentStand_EVENTS_FAN_OUT = "refreshmentStand-events";
-
+    public static final String QUE_GATE_EVENTS = "que-gate.events";
 
 
     @Bean
-    FanoutExchange refreshmentStandEventsExchange() {
-        return new FanoutExchange(RefreshmentStand_EVENTS_FAN_OUT);
+    Queue attractionEventsQueue() {
+        return new Queue(ATTRACTION_CREATED);
     }
 
     @Bean
-    Queue refreshmentStandEventsQueue() {
-        return new Queue(RefreshmentStand_EVENTS_FAN_OUT);
+    FanoutExchange attractionEventsExchange() {
+        return new FanoutExchange(ATTRACTION_CREATED);
     }
 
+    @Bean
+    FanoutExchange refreshmentStandCreatedExchange() {
+        return new FanoutExchange(REFRESHMENT_STAND_CREATED);
+    }
 
     @Bean
-    Binding eventsBinding(FanoutExchange ticketEventsExchange, Queue ticketEventsQueue) {
-        return BindingBuilder.bind(ticketEventsQueue).to(ticketEventsExchange);
+    Queue refreshmentStandCreatedQueue() {
+        return new Queue(REFRESHMENT_STAND_CREATED);
+    }
+    @Bean
+    FanoutExchange queGateEventsExchange() {
+        return new FanoutExchange(QUE_GATE_EVENTS);  // Naming consistency with "events"
+    }
+
+    @Bean
+    Queue queGateEventsQueue() {
+        return new Queue(QUE_GATE_EVENTS);  // Naming consistency with "events"
+    }
+
+    @Bean
+    Binding queGateEventsBinding(FanoutExchange queGateEventsExchange, Queue queGateEventsQueue) {
+        return BindingBuilder.bind(queGateEventsQueue).to(queGateEventsExchange);
+    }
+
+    @Bean
+    Binding refreshmentStandCreatedBinding(FanoutExchange refreshmentStandCreatedExchange, Queue refreshmentStandCreatedQueue) {
+        return BindingBuilder.bind(refreshmentStandCreatedQueue).to(refreshmentStandCreatedExchange);
+    }
+
+    @Bean
+    Binding attractionEventsBinding(FanoutExchange attractionEventsExchange, Queue attractionEventsQueue) {
+        return BindingBuilder.bind(attractionEventsQueue).to(attractionEventsExchange);
     }
 }

@@ -2,6 +2,7 @@ package be.keg.prog6.parkOperations.adapters.out.db;
 
 import be.keg.prog6.parkOperations.domain.QueGate;
 import be.keg.prog6.parkOperations.domain.TicketInQue;
+import be.keg.prog6.parkOperations.ports.out.CreateQueGatePort;
 import be.keg.prog6.parkOperations.ports.out.LoadQueGatePort;
 import be.keg.prog6.parkOperations.ports.out.UpdateQueGatePort;
 import lombok.AllArgsConstructor;
@@ -14,7 +15,8 @@ import java.util.UUID;
 
 @Repository
 @AllArgsConstructor
-public class QueGateDBAdapter implements LoadQueGatePort, UpdateQueGatePort {
+public class QueGateDBAdapter implements LoadQueGatePort, UpdateQueGatePort, CreateQueGatePort
+{
     private final QueGateRepository queGateRepository;
     @Override
     public Optional<QueGate> loadQueGate(UUID uuid) {
@@ -34,6 +36,21 @@ public class QueGateDBAdapter implements LoadQueGatePort, UpdateQueGatePort {
     }
 
     @Override
+    public List<QueGate> loadAllQueGates() {
+        return queGateRepository.findAll().stream().map(
+                queGateJPAEntity ->
+                new QueGate(
+                        new QueGate.QueGateUUID(queGateJPAEntity.getQueGateUUID()),
+                        queGateJPAEntity.getMaxCapacity(),
+                        queGateJPAEntity.getCurrentCapacity(),
+                        queGateJPAEntity.getAverageWaitTime(),
+                        new QueGate.AttractionUUID(queGateJPAEntity.getAttractionUUID()),
+                        new ArrayList<>()
+                )
+        ).toList();
+    }
+
+    @Override
     public void updateQueGate(QueGate queGate) {
         Optional<QueGateJPAEntity> queGateJPAEntity = queGateRepository.findByQueGateUUID(queGate.getQueGateUUID().uuid());
 
@@ -43,5 +60,16 @@ public class QueGateDBAdapter implements LoadQueGatePort, UpdateQueGatePort {
 
             queGateRepository.save(queGateJPAEntity.get());
         });
+    }
+
+    @Override
+    public void createQueGate(QueGate queGate) {
+        queGateRepository.save(new QueGateJPAEntity(
+                queGate.getQueGateUUID().uuid(),
+                queGate.getMaxCapacity(),
+                queGate.getCurrentCapacity(),
+                queGate.getAverageWaitTime(),
+                queGate.getAttractionUUID().uuid()
+        ));
     }
 }

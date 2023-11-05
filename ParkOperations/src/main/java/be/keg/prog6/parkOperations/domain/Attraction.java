@@ -23,5 +23,13 @@ public class Attraction {
     public record QueGateUUID(UUID uuid) {
     }
 
+    public Attraction(UUID attractionUUID,String name, String description, Point location, UUID queGateUUID) {
+        this(new AttractionUUID(attractionUUID),
+                name,
+                description,
+                location,
+                new QueGateUUID(queGateUUID));
+    }
+
 
 }
