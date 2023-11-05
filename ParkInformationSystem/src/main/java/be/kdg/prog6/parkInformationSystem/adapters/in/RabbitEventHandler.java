@@ -2,6 +2,7 @@ package be.kdg.prog6.parkInformationSystem.adapters.in;
 
 import be.kdg.prog6.common.events.EventMessage;
 import be.kdg.prog6.common.facades.attraction.AttractionEvent;
+import be.kdg.prog6.common.facades.refreshmentStand.RefreshmentStandEvent;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +16,7 @@ import java.util.List;
     public class RabbitEventHandler {
 
         private final List<AttractionEventHandler<? extends AttractionEvent>> attractionEventHandlers;
+        private final List<RefreshmentStandEventHandler<? extends RefreshmentStandEvent>> refreshmentStandEventHandlers;
         private final Logger logger = LoggerFactory.getLogger(RabbitEventHandler.class);
 
         @RabbitListener(queues = RabbitMQModuleTopology.ATTRACTION_CREATED, messageConverter = "#{jackson2JsonMessageConverter}")
@@ -38,17 +40,17 @@ import java.util.List;
         @RabbitListener(queues = RabbitMQModuleTopology.REFRESHMENT_STAND_CREATED, messageConverter = "#{jackson2JsonMessageConverter}")
         public void receiveRefreshmentStandEventMessage(EventMessage eventMessage) {
             logger.info("Received event message: {}", eventMessage);
-            attractionEventHandlers.stream()
+            refreshmentStandEventHandlers.stream()
                     .filter(
-                            attractionEventHandler ->
-                                    attractionEventHandler.appliesTo(
+                            refreshmentStandEventHandler ->
+                                    refreshmentStandEventHandler.appliesTo(
                                             eventMessage.getEventHeader().getEventCatalog()
                                     )
                     )
                     .forEach(
-                            attractionEventHandler ->
-                                    attractionEventHandler.receive(eventMessage).handle(
-                                            attractionEventHandler.map(eventMessage.getEventBody())
+                            refreshmentStandEventHandler ->
+                                    refreshmentStandEventHandler.receive(eventMessage).handle(
+                                            refreshmentStandEventHandler.map(eventMessage.getEventBody())
                                     )
                     );
         }

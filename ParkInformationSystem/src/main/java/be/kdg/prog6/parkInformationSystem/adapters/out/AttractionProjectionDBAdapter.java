@@ -18,7 +18,7 @@ public class AttractionProjectionDBAdapter implements LoadAttractionPort, Create
 
     @Override
     public Optional<Attraction> loadAttraction(UUID attractionUUID) {
-        Optional<AttractionProjectionJpaEntity> attractionJpaEntity = attractionProjectionRepository.findByAttractionUUID(String.valueOf(attractionUUID));
+        Optional<AttractionProjectionJpaEntity> attractionJpaEntity = attractionProjectionRepository.findByAttractionUUID(attractionUUID);
         if(attractionJpaEntity.isPresent()){
             Attraction attraction = new Attraction(new Attraction.AttractionUUID(attractionUUID),
                     attractionJpaEntity.get().getName(),
@@ -38,7 +38,7 @@ public class AttractionProjectionDBAdapter implements LoadAttractionPort, Create
     public List<Attraction> loadAttractions() {
         return attractionProjectionRepository.findAll().stream().map(
                 attractionProjectionJpaEntity -> new Attraction(
-                        new Attraction.AttractionUUID(UUID.fromString(attractionProjectionJpaEntity.getAttractionUUID())),
+                        new Attraction.AttractionUUID(attractionProjectionJpaEntity.getAttractionUUID()),
                         attractionProjectionJpaEntity.getName(),
                         attractionProjectionJpaEntity.getDescription(),
                         attractionProjectionJpaEntity.getCurrentCapacity(),
@@ -53,7 +53,7 @@ public class AttractionProjectionDBAdapter implements LoadAttractionPort, Create
     public void createAttraction(Attraction attraction) {
         AttractionProjectionJpaEntity attractionProjectionJpaEntity = new AttractionProjectionJpaEntity();
 
-        attractionProjectionJpaEntity.setAttractionUUID(String.valueOf(attraction.getAttractionUUID()));
+        attractionProjectionJpaEntity.setAttractionUUID(attraction.getAttractionUUID().uuid());
         attractionProjectionJpaEntity.setName(attraction.getName());
         attractionProjectionJpaEntity.setDescription(attraction.getDescription());
         attractionProjectionJpaEntity.setCurrentCapacity(attraction.getCurrentCapacity());

@@ -9,6 +9,7 @@ import org.hibernate.annotations.JdbcTypeCode;
 import java.awt.*;
 import java.sql.Types;
 import java.time.Duration;
+import java.util.UUID;
 
 @Entity
 @Table(name = "attraction_projection")
@@ -22,7 +23,7 @@ public class AttractionProjectionJpaEntity {
     @Column(name = "attraction_uuid")
     @JdbcTypeCode(Types.VARCHAR)
     @Setter
-    private String attractionUUID;
+    private UUID attractionUUID;
     @Setter
     private String name;
     @Setter

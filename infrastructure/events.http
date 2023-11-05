@@ -45,5 +45,8 @@ Content-Type: application/json
   "ticketAction": "CHECK_OUT"
 }
 
+###
+
+GET http://localhost:8092/interactiveMap
 
 
