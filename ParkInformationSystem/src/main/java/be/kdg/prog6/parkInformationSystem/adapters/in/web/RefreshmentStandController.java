@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+
 @RestController
 @AllArgsConstructor
 public class RefreshmentStandController {
@@ -17,6 +18,6 @@ public class RefreshmentStandController {
 
      @GetMapping("/refreshmentStands")
         public List<RefreshmentStandDTO> getRefreshmentStands() {
-            return loadRefreshmentStandUseCase.loadRefreshmentStands().stream().map(RefreshmentStand::toDTO).collect(java.util.stream.Collectors.toList());
+            return loadRefreshmentStandUseCase.loadRefreshmentStands().stream().map(RefreshmentStand::toDTO).toList();
         }
 }

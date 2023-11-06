@@ -70,4 +70,12 @@ GET http://localhost:8092/interactiveMap
 
 GET http://localhost:8092/attractions
 
+###
+
+GET http://localhost:8092/refreshmentStands
+
+###
+
+GET http://localhost:8092/pointOfInterests
+
 
