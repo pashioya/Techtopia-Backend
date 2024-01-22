@@ -1,6 +1,14 @@
 plugins {
     id 'module-config'
+    id 'application'
 }
+
+mainClassName='be.kdg.prog6.entranceGate.EntranceGateApplication'
+
+java {
+    sourceCompatibility = '17'
+}
+
 
 dependencies {
     implementation project(':common')
@@ -17,8 +25,8 @@ dependencies {
     testImplementation 'org.springframework.amqp:spring-rabbit-test'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-    compileOnly 'org.projectlombok:lombok:1.18.28'
-    annotationProcessor 'org.projectlombok:lombok:1.18.28'
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
 
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
     implementation 'org.springframework.boot:spring-boot-starter-security'
@@ -26,12 +34,4 @@ dependencies {
 
 test {
     useJUnitPlatform()
-}
-
-sourceSets{
-    main {
-        java {
-            resources.srcDirs = ['config']
-        }
-    }
 }

@@ -1,0 +1,29 @@
+procs:
+  infrastructure:
+    shell: ". ./.env; cd techtopia-backend/infrastructure; docker-compose up"
+    stop: { send-keys: ["<C-c>"] }
+    autostart: false
+  techtopia-backend:
+    shell: ". ./.env; cd techtopia-backend; gradle bootRun"
+    stop: { send-keys: ["<C-c>"] }
+    autostart: false
+  techtopia-frontend:
+    shell: ". ./.env; cd techtopia-frontend/techtopia-frontend; npm run dev"
+    stop: { send-keys: ["<C-c>"] }
+    autostart: false
+  backend-entrance-gate:
+    shell: ". ./.env; cd techtopia-backend; gradle :EntranceGate:bootRun"
+    stop: { send-keys: ["<C-c>"] }
+    autostart: false
+  backend-park-info-sys:
+    shell: ". ./.env; cd techtopia-backend; gradle :ParkInformationSystem:bootRun"
+    stop: { send-keys: ["<C-c>"] }
+    autostart: false
+  backend-park-ops:
+    shell: ". ./.env; cd techtopia-backend; gradle :ParkOperations:bootRun"
+    stop: { send-keys: ["<C-c>"] }
+    autostart: false
+  backend-ticketing:
+    shell: ". ./.env; cd techtopia-backend; gradle :Ticketing:bootRun"
+    stop: { send-keys: ["<C-c>"] }
+    autostart: false
