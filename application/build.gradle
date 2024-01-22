@@ -10,11 +10,3 @@ dependencies {
     implementation project(':EntranceGate')
     implementation project(':ParkOperations')
 }
-
-sourceSets{
-    main {
-        java {
-            resources.srcDirs = ['config']
-        }
-    }
-}

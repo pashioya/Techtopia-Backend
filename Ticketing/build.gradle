@@ -1,5 +1,6 @@
 plugins {
     id 'module-config'
+    id 'application'
 }
 
 mainClassName='be.kdg.prog6.ticketing.TicketingApplication'
